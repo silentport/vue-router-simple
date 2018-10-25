@@ -193,7 +193,7 @@ const removeHash = (route) => {
 我们可以看到当浏览器后退的时候，`history`模式会触发`popstate`事件，这个时候是通过`state`状态去获取`path`的，那么`state`状态从哪里来呢，答案是从`window.history`对象的`pushState`和`replaceState`而来，这两个方法正好可以用来实现`router`的`push`方法和`replace`方法，我们看一下这里它们的实现：
 
 ```javascript
-Router.prototype.push = (options) => {
+Router.prototype.push = function (options) {
   this.history.current = options.path;
   if (this.mode === 'history') {
     history.pushState({
@@ -207,7 +207,7 @@ Router.prototype.push = (options) => {
   }
 }
 
-Router.prototype.replace = (options) => {
+Router.prototype.replace = function (options) {
   this.history.current = options.path;
   if (this.mode === 'history') {
     history.replaceState({
