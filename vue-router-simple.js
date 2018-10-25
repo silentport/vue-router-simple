@@ -29,7 +29,7 @@ const fixHash = () => {
     this.history = new RouterHistory();
     this.init();
   }
-  Router.prototype.push = (options) => {
+  Router.prototype.push = function (options) {
   
     this.history.current = options.path;
   
@@ -46,7 +46,7 @@ const fixHash = () => {
   
   }
   
-  Router.prototype.replace = (options) => {
+  Router.prototype.replace = function (options) {
 
     this.history.current = options.path;
   
